@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/home/add_form', 'AddDBController@write');
 
 Route::get('/home/pass_change', 'UserController@edit');
+
+Route::get('/home/search', 'ContractorController@search');
