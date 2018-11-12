@@ -10,7 +10,14 @@ class UserController extends Controller
 {
      public function edit(Request $request)
      {
-         $users = DB::select('select * from users');
-         return view('User.pass_change',['users'=>$users]);
+         $users = DB::table('contractor')->where('name','=',"てすと" ,"AND", 'name','=',"てすと")->count();
+         if($users==0){
+             $test='ユーザーが見つかりません';
+
+         }else{
+             $test='ユーザー発見';
+         }
+
+         return view('User.pass_change',['users'=>$users],compact('test'));
      }
 }
