@@ -24,3 +24,5 @@ Route::get('/home/add_form', 'AddDBController@write');
 Route::get('/home/pass_change', 'UserController@edit');
 
 Route::get('/home/search', 'ContractorController@search');
+
+Route::post('/home/test', 'ContractorController@test');
