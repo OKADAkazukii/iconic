@@ -20,7 +20,8 @@
             <br>
             <a href="/home/add_form">入電情報を登録</a><br>
             <a href="/home/search">顧客検索</a><br>
-            <a href="/home/pass_change">パスワード変更</a>
+            <a href="/home/pass_change">パスワード変更</a><br>
+            <a href="/home/inquiry">登録データ一覧</a>
         </div>
     </div>
 </div>
