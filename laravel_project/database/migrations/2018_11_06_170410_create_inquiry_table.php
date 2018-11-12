@@ -18,18 +18,18 @@ class CreateInquiryTable extends Migration
             $table->date('create_time');
             $table->integer('user_id');
             $table->integer('contractor_id');
-            $table->char('contractor_tel(13)')->unique();
-            $table->char('income(255)');
-            $table->char('relation(255)');
+            $table->char('tel')->unique();
+            $table->char('income');
+            $table->char('relation');
             $table->char('overview');
-            $table->char('sales(255)');
-            $table->char('agent(255)');
+            $table->char('sales');
+            $table->char('agency');
             $table->text('contents');
             $table->text('response');
             $table->text('work');
-            $table->char('contact(255)');
-            $table->char('contact_n(13)');
-            $table->char('call_time(255)');
+            $table->char('contact');
+            $table->char('contact_n');
+            $table->char('call_time');
             $table->timestamps();
         });
     }

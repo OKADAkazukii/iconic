@@ -7,125 +7,143 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="container">
+                @if ($errors->any())
+                    <div class="errors">
+                        <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                        </ul>
+                    </div>
+                 @endif
+            <br>
+
+            <form action="/home/add_form" method="post" enctype="multipart/form-data">
+               {{ csrf_field() }}
+              <div class="row">
+                  <div class="col-sm-3">電話番号</div>
+                  <div class="col-sm-9 form-inline" style="padding: 3px;">
+                      <input class="form-control input-sm" name="tel" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel')}}">
+                  </div>
+              </div>
+<div id="contractor">
+              <input type="hidden" name="contractor_id" value="">
 
               <div class="row">
                   <div class="col-sm-3">契約者氏名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="契約者氏名" size="20" type="text">
+                      <input class="form-control input-sm" name="name" placeholder="契約者氏名" size="20" type="text" value="{{old('name')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">サービス開始</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="契約者氏名" size="20" type="date">
+                      <input class="form-control input-sm" name="service_s" placeholder="契約者氏名" size="20" type="date" value="{{old('service_s')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">郵便番号</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-	            <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="〒000-0000">
+	            <input type="text" name="postal" class="form-control" placeholder="〒000-0000" value="{{old('postal')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">住所</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="住所" size="30" type="text">
+                      <input class="form-control input-sm" name="address" placeholder="住所" size="30" type="text" value="{{old('address')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">部屋番号</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="部屋番号（任意入力）" size="20" type="text">
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-3">電話番号</div>
-                  <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="00-0000-0000" size="20" type="tel">
+                      <input class="form-control input-sm" name="room_number" placeholder="部屋番号（任意入力）" size="20" type="text" value="{{old('room_number')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">住所2</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="住所2（任意入力）" size="30" type="text">
+                      <input class="form-control input-sm" name="address2" placeholder="住所2（任意入力）" size="30" type="text" value="{{old('address2')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">部屋番号2</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="部屋番号2（任意入力）" size="20" type="text">
+                      <input class="form-control input-sm" name="room_number2" placeholder="部屋番号2（任意入力）" size="20" type="text" value="{{old('room_number2')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">電話番号2</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="00-0000-0000" size="20" type="tel">
+                      <input class="form-control input-sm" name="tel2" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel2')}}">
                   </div>
               </div>
+</div>
+
+<div id="inquiry">
               <div class="row">
                   <div class="col-sm-3">代理店名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="代理店名" size="30" type="text">
+                      <input class="form-control input-sm" name="agency" placeholder="代理店名" size="30" type="text" value="{{old('agency')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">販売店名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="販売店名" size="30" type="text">
+                      <input class="form-control input-sm" name="sales" placeholder="販売店名" size="30" type="text" value="{{old('sales')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">入電者</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="kana" placeholder="入電者" size="20" type="text">
+                      <input class="form-control input-sm" name="income" placeholder="入電者" size="20" type="text" value="{{old('income')}}">
                   </div>
               </div>
               <div class="row">
                  <div class="col-sm-3">入電者の関係</div>
                  <div class="col-sm-9" style="padding: 3px;">
-                     <input class="form-control input-sm" id="address" placeholder="入電者の関係" type="text">
+                     <input class="form-control input-sm" name="relation" placeholder="入電者の関係" type="text" value="{{old('relation')}}">
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-3">入電の概要</div>
                  <div class="col-sm-9" style="padding: 3px;">
-                     <input class="form-control input-sm" id="address" placeholder="入電の概要" type="text">
+                     <input class="form-control input-sm" name="overview" placeholder="入電の概要" type="text" value="{{old('overview')}}">
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-3">受付内容</div>
                  <div class="col-sm-9" style="padding: 3px;">
-                     <textarea class="form-control  input-sm" rows="3" id="comment" placeholder="受付内容"></textarea>
+                     <textarea class="form-control  input-sm" rows="3" name="contents" placeholder="受付内容">{{old('contents')}}</textarea>
                  </div>
               </div>
               <div class="row">
                  <div class="col-sm-3">対応内容</div>
                  <div class="col-sm-9" style="padding: 3px;">
-                     <textarea class="form-control  input-sm" rows="3" id="comment" placeholder="対応内容"></textarea>
+                     <textarea class="form-control  input-sm" rows="3" name="response" placeholder="対応内容">{{old('response')}}</textarea>
                  </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">連絡希望者</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="連絡希望者" size="20" type="text">
+                      <input class="form-control input-sm" name="contact" placeholder="連絡希望者" size="20" type="text" value="{{old('contact')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">連絡先</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="00-0000-0000" size="20" type="tel">
+                      <input class="form-control input-sm" name="contact_n" placeholder="00-0000-0000" size="20" type="tel" value="{{old('contact_n')}}">
                   </div>
               </div>
               <div class="row">
                   <div class="col-sm-3">時間指定（任意入力）</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" id="name" placeholder="時間指定" size="20" type="text">
+                      <input class="form-control input-sm" name="call_time" placeholder="時間指定" size="20" type="text" value="{{old('call_time')}}">
                   </div>
               </div>
-
+</div>
    
               <div class="text-center" style="padding: 30px;">
-                 <button type="button" class="btn btn-success">送信内容の確認 <span class="glyphicon glyphicon-chevron-right"></span></button>
+                 <button type="submit" class="btn btn-success">送信内容の確認 <span class="glyphicon glyphicon-chevron-right"></span></button>
               </div>
 
             </div>
@@ -134,3 +152,16 @@
     <div>
 </div>
 @endsection
+
+<script>
+$(function (){
+    $.getJSON(url任意,function(data){
+        if(data){
+            $("input[name='contractor_id']").val(data[0].contractor_id);
+        }else{
+            $("#contractor").show();
+        }
+        $("#inquery").show();
+    });
+})
+</script>
