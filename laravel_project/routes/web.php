@@ -19,19 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/home/add_form', 'AddDBController@write');
+
 Route::get('/home/pass_change', 'UserController@edit');
 
 Route::get('/home/search', 'ContractorController@search');
 
 Route::post('/home/test', 'ContractorController@test');
-
-Route::get('/home/add_form', 'AddDBController@write');
-
-Route::post('/home/add_form', 'AddDBController@submit');
-
-Route::post('/home/add_form/add', 'AddDBController@add');
-
-Route::get('/home/inquiry', 'InquiryController@index');
 
 Route::get('/home/inquiry/{id}', 'InquiryController@show');
 

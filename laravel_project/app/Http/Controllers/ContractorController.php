@@ -11,8 +11,12 @@ class ContractorController extends Controller
         return view('Contractor.search');
     } 
  
-    public function test(Request $request)
+    public function test(Request $req)
     {
-    $input = $request->all();
-        return view('Contaractor.test');
-    }}
+    $ttt = $req ->tel;
+          
+
+         return view('Contractor.test',compact("ttt"));
+
+  
+   }}
