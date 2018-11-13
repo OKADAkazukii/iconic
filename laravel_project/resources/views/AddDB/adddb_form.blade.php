@@ -1,6 +1,30 @@
-@extends('layouts.app')
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+$(function (){
+    $.getJSON("/json",function(data){
+        if(data[0].id == 1){
+            $("input[name='id']").val(data[0].id);
+            $("input[name='name']").val(data[0].name);
+            $("input[name='service_s']").val(data[0].service_s);
+            $("input[name='postal']").val(data[0].postal);
+            $("input[name='address']").val(data[0].address);
+            $("input[name='address2']").val(data[0].s_address);
+            $("input[name='room_number']").val(data[0].room_number);
 
-@section('content')
+            $("#test").show();
+            $("#contractor").hide();
+        }else{
+            $("#test").hide();
+            $("#contractor").show();
+        }
+        $("#inquery").show();
+    });
+})
+</script>
+</head>
+<body>
 <div class="container">
     <h2>新規入電情報登録フォーム</h2>
     <br>
@@ -26,13 +50,21 @@
                       <input class="form-control input-sm" name="tel" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel')}}">
                   </div>
               </div>
+<br>
+<div id="test">既存契約者が検索されました、契約者データ挿入完了。契約者名....</div>
+<br><br>
 <div id="contractor">
-              <input type="hidden" name="contractor_id" value="">
-
+              
+              <div class="row">
+                  <div class="col-sm-3">id(hiddenにする)</div>
+                  <div class="col-sm-9 form-inline" style="padding: 3px;">
+                      <input class="form-control input-sm" type="text" name="id" value="">
+                  </div>
+              </div>
               <div class="row">
                   <div class="col-sm-3">契約者氏名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" name="name" placeholder="契約者氏名" size="20" type="text" value="{{old('name')}}">
+                      <input class="form-control input-sm" type="text" name="name" value="{{old('name')}}" placeholder="契約者氏名" size="20">
                   </div>
               </div>
               <div class="row">
@@ -151,17 +183,5 @@
         <div>
     <div>
 </div>
-@endsection
-
-<script>
-$(function (){
-    $.getJSON(url任意,function(data){
-        if(data){
-            $("input[name='contractor_id']").val(data[0].contractor_id);
-        }else{
-            $("#contractor").show();
-        }
-        $("#inquery").show();
-    });
-})
-</script>
+</body>
+</html>

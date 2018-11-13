@@ -19,6 +19,7 @@
 <p>宛先希望 : {{ $show->contact }}</p>
 <p>宛先番号 : {{ $show->contact_n }}</p>
 <p>時間指定 : {{ $show->call_time }}</p>
+<a href="{{ action('InquiryController@edit', $show->id) }}">変更ページ</a>
 @endforeach
 
 @endsection
