@@ -12,6 +12,11 @@ class AdddbController extends Controller
         return view('AddDB.adddb_form');
     }
 
+    public function json()
+    {
+        return view('AddDB.jsondata');
+    }
+
     public function submit(Request $request)
     {
         $request->validate([
