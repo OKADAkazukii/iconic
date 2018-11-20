@@ -27,6 +27,14 @@ Route::get('/home/search', 'ContractorController@search');
 
 Route::post('/home/test', 'ContractorController@test');
 
+Route::get('/home/add_form', 'AddDBController@write');
+
+Route::post('/home/add_form', 'AddDBController@submit');
+
+Route::post('/home/add_form/add', 'AddDBController@add');
+
+Route::get('/home/inquiry', 'InquiryController@index');
+
 Route::get('/home/inquiry/{id}', 'InquiryController@show');
 
 Route::get('/home/inquiry/{id}/edit', 'InquiryController@edit');
@@ -34,3 +42,5 @@ Route::get('/home/inquiry/{id}/edit', 'InquiryController@edit');
 Route::post('/home/inquiry/update', 'InquiryController@update');
 
 Route::get('/json', 'AddDBController@json');
+
+

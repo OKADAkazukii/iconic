@@ -16,7 +16,7 @@ class UserController extends Controller
 
          }else{
              $test='ユーザー発見';
-         }
+         }           
 
          return view('User.pass_change',['users'=>$users],compact('test'));
      }
