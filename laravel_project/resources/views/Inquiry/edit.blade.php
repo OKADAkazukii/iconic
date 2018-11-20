@@ -1,12 +1,12 @@
-                @if ($errors->any())
-                    <div class="errors">
-                        <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                        </ul>
-                    </div>
-                 @endif
+    @if ($errors->any())
+        <div class="errors">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
+        </div>
+    @endif
 <br>
 <form action="/home/inquiry/update" method="post" enctype="multipart/form-data">
                {{ csrf_field() }}

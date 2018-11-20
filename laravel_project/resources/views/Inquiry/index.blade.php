@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<h2>登録情報一覧（ページネーション未実装）</h2>
+<h2>登録情報一覧</h2>
 
 @foreach($inquirys as $inquiry)
     <ul>
@@ -12,6 +12,7 @@
         <a href="{{ action('InquiryController@show', $inquiry->id) }}">詳細ページ</a>
     </ul>
 @endforeach
+<div>{{ $inquirys->links() }}</div>
 
 @endsection
 
