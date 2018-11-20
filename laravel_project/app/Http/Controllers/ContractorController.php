@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class ContractorController extends Controller
 {
@@ -13,10 +14,17 @@ class ContractorController extends Controller
  
     public function test(Request $req)
     {
-    $ttt = $req ->tel;
-          
+        $aaa = $req->input ('tel');
 
-         return view('Contractor.test',compact("ttt"));
+        if(DB::table('inquiry')->where('tel','=',$aaa)->count()>0){
+            $bbb = DB::table('inquiry')->where('tel','=',$aaa)->value('contractor_id');
+            $ttt = DB::table('contractor')->where('id','=',$bbb)->first(); 
+ 
+        }else{
+            $ttt = "Nothing";
+        }
 
-  
-   }}
+        return view('Contractor.test',compact('ttt'));
+
+   }
+}
