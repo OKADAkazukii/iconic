@@ -71,8 +71,9 @@
                     @auth
                         <a href="{{ url('/home') }}">ホーム画面へ</a>
                     @else
-                        <a href="{{ route('login') }}">ログイン</a>
-                        <a href="{{ route('register') }}">新規登録</a>
+                        <a href="{{ route('login') }}">一般ログイン</a>
+                        <a href="/admin/login">管理者ログイン</a>
+
                     @endauth
                 </div>
             @endif

@@ -15,7 +15,7 @@ class CreateInquiryTable extends Migration
     {
         Schema::create('inquiry', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('create_time');
+            $table->char('create_time');
             $table->integer('user_id');
             $table->integer('contractor_id');
             $table->char('tel')->unique();
