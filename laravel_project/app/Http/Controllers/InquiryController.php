@@ -4,19 +4,29 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Post;
+use Illuminate\Auth\Middleware\Authenticate;
 
 class InquiryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
-    $inquirys = \DB::table('inquiry')->get();
-    return view('Inquiry.index',compact('inquirys'));
+    $inquirys = \DB::table('inquiry')->paginate(1);
+    return view('Inquiry.index', compact('inquirys'));
     }
 
     public function show($id)
     {
     $inquiry = DB::table("inquiry")->where("id","=","$id")->get();
-    return view('Inquiry.show',compact('inquiry'));
+    $contractor = DB::table("contractor")->where("id","=","{$inquiry[0]->contractor_id}")->get(['name']);
+    $user = DB::table("users")->where("id","=","{$inquiry[0]->user_id}")->get(['name']);
+    $data = ['user'=>"{$user[0]->name}", 'contractor'=>"{$contractor[0]->name}"];
+    return view('Inquiry.show',compact('inquiry'),compact('data'));
     }
 
     public function edit($id)

@@ -4,12 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Inquiry;
+use Illuminate\Auth\Middleware\Authenticate;
 
 class AdddbController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function write()
     {
-        return view('AddDB.adddb_form');
+        $ldate = date('Y-m-d H:i');
+        return view('AddDB.adddb_form',compact('ldate'));
+    }
+
+    public function getContractor($tel)
+    {
+        if($contractor_id = DB::table("inquiry")->where("tel","=","$tel")->get(["contractor_id"])){
+            $contractor = DB::table("contractor")->where("id","=","$contractor_id")->get();
+        }else{
+            $contractor = '該当する顧客が見つかりませんでした';
+        }
+        return response()->json($contractor);
     }
 
     public function json()
@@ -92,7 +110,7 @@ class AdddbController extends Controller
 
     //入電情報の登録
         DB::table('inquiry')->insert([
-        'create_time' => '2018-11-01',
+        'create_time' => $add_data["create_time"],
         'user_id' => $l_user->id,
         'contractor_id' => $contractor_id,
         'tel' => $add_data["tel"],

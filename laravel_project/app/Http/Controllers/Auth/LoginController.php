@@ -38,7 +38,7 @@ class LoginController extends Controller
     }
 
     /**
-     *ユーザーネームでのログインメソッド
+     *ユーザーネームでのログインする為のオーバーライド
      *
      */
     public function username()

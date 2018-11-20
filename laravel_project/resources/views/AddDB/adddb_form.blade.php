@@ -1,28 +1,10 @@
+@extends('layouts.app')
+
+@section('content')
 <html>
 <head>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script>
-$(function (){
-    $.getJSON("/json",function(data){
-        if(data[0].id == 1){
-            $("input[name='id']").val(data[0].id);
-            $("input[name='name']").val(data[0].name);
-            $("input[name='service_s']").val(data[0].service_s);
-            $("input[name='postal']").val(data[0].postal);
-            $("input[name='address']").val(data[0].address);
-            $("input[name='address2']").val(data[0].s_address);
-            $("input[name='room_number']").val(data[0].room_number);
-
-            $("#test").show();
-            $("#contractor").hide();
-        }else{
-            $("#test").hide();
-            $("#contractor").show();
-        }
-        $("#inquery").show();
-    });
-})
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="/js/test.js"></script>
 </head>
 <body>
 <div class="container">
@@ -47,7 +29,10 @@ $(function (){
               <div class="row">
                   <div class="col-sm-3">電話番号</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" name="tel" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel')}}">
+                      <input class="form-control input-sm" name="tel" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel')}}" onblur="test(this)" >
+
+                       <input type="button" class="target" value="電話番号検索" onclick="getTel()">
+
                   </div>
               </div>
 <br>
@@ -112,6 +97,9 @@ $(function (){
 </div>
 
 <div id="inquiry">
+
+              <input class="form-control input-sm" type="hidden" name="create_time" value="{{$ldate}}">
+
               <div class="row">
                   <div class="col-sm-3">代理店名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
@@ -185,3 +173,4 @@ $(function (){
 </div>
 </body>
 </html>
+@endsection

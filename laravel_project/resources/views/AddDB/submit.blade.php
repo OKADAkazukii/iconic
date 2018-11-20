@@ -31,6 +31,9 @@
     <p>電話番号2 : {{$post_data['tel2']}}</p>
         <input type="hidden" name="tel2" value="{{$post_data['tel2']}}">
 
+    <p>登録日時 : {{$post_data['create_time']}}</p>
+        <input type="hidden" name="create_time" value="{{$post_data['create_time']}}">
+
     <p>代理店名 : {{$post_data['agency']}}</p>
         <input type="hidden" name="agency" value="{{$post_data['agency']}}">
 
