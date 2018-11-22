@@ -45,6 +45,11 @@ Route::get('/home/inquiry/{id}/edit', 'InquiryController@edit');
 
 Route::post('/home/inquiry/update', 'InquiryController@update');
 
+Route::post('/home/inquiry/status_change', 'InquiryController@statuschange');
+
+Route::get('/home/status', 'InquiryController@statusindex');
+
 Route::get('/json', 'AddDBController@json');
 
 Route::get('/tel', 'AddDBController@getContractor');
+

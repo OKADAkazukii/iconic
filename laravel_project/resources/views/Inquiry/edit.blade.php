@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
     @if ($errors->any())
         <div class="errors">
             <ul>
@@ -8,7 +10,8 @@
         </div>
     @endif
 <br>
-<form action="/home/inquiry/update" method="post" enctype="multipart/form-data">
+<div class="container">
+    <form action="/home/inquiry/update" method="post" enctype="multipart/form-data">
                {{ csrf_field() }}
               @foreach($inquiry as $edit)
 
@@ -21,6 +24,12 @@
                   <div class="col-sm-3">電話番号</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
                       <input class="form-control input-sm" name="tel" size="20" type="tel" value="{{$edit->tel}}">
+                  </div>
+              </div>
+<div class="row">
+                  <div class="col-sm-3">電話番号2</div>
+                  <div class="col-sm-9 form-inline" style="padding: 3px;">
+                      <input class="form-control input-sm" name="tel2" size="20" type="tel" value="{{$edit->tel2}}">
                   </div>
               </div>
               <div class="row">
@@ -89,9 +98,11 @@
                       <input class="form-control input-sm" name="call_time" size="20" type="text" value="{{$edit->call_time}}">
                   </div>
               </div>
-</div>
+
    
               <div class="text-center" style="padding: 30px;">
-                 <button type="submit" class="btn btn-success">内容を変更する <span class="glyphicon glyphicon-chevron-right"></span></button>
+                 <button type="submit" class="btn btn-info">内容を変更する <span class="glyphicon glyphicon-chevron-right"></span></button>
               </div>
         @endforeach
+</div>
+@endsection

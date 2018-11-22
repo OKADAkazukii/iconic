@@ -14,17 +14,17 @@ class ContractorController extends Controller
  
     public function test(Request $req)
     {
-        $aaa = $req->input ('tel');
+        $tel = $req->input('tel');
 
-        if(DB::table('inquiry')->where('tel','=',$aaa)->count()>0){
-            $bbb = DB::table('inquiry')->where('tel','=',$aaa)->value('contractor_id');
-            $ttt = DB::table('contractor')->where('id','=',$bbb)->first(); 
- 
-        }else{
-            $ttt = "Nothing";
+        if(DB::table('inquiry')->where('tel','=',$tel)->count()>0){
+            $contractor_id = DB::table('inquiry')->where('tel','=',$tel)->value('contractor_id');
+            $contractor = DB::table('contractor')->where('id','=',$contractor_id)->first();
+            if(DB::table('inquiry')->where('contractor_id','=',$contractor_id)->count()>0){
+                $c_inquirys = DB::table('inquiry')->where('contractor_id','=',$contractor_id)
+                ->orderBy('create_time','desc')->get();
+            }
         }
-
-        return view('Contractor.test',compact('ttt'));
+        return view('Contractor.test',compact('contractor'),compact('c_inquirys'));
 
    }
 }
