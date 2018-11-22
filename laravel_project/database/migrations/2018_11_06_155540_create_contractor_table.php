@@ -19,7 +19,6 @@ class CreateContractorTable extends Migration
             $table->date('service_s');
             $table->string('postal');
             $table->char('address');
-            $table->char('s_address');
             $table->char('room_number');
             $table->timestamps();
         });

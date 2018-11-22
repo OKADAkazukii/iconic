@@ -22,12 +22,6 @@
     <p>電話番号 : {{$post_data['tel']}}</p>
         <input type="hidden" name="tel" value="{{$post_data['tel']}}">
 
-    <p>住所2 : {{$post_data['address2']}}</p>
-        <input type="hidden" name="address2" value="{{$post_data['address2']}}">
-
-    <p>部屋番号2 : {{$post_data['room_number2']}}</p>
-        <input type="hidden" name="room_number2" value="{{$post_data['room_number2']}}">
-
     <p>電話番号2 : {{$post_data['tel2']}}</p>
         <input type="hidden" name="tel2" value="{{$post_data['tel2']}}">
 

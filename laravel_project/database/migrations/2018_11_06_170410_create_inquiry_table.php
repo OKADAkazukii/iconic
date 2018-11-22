@@ -19,6 +19,7 @@ class CreateInquiryTable extends Migration
             $table->integer('user_id');
             $table->integer('contractor_id');
             $table->char('tel')->unique();
+            $table->char('tel2');
             $table->char('income');
             $table->char('relation');
             $table->char('overview');
@@ -31,6 +32,7 @@ class CreateInquiryTable extends Migration
             $table->char('contact_n');
             $table->char('call_time');
             $table->timestamps();
+            $table->integer('status')->default(0);
         });
     }
 

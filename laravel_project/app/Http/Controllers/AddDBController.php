@@ -72,14 +72,12 @@ class AdddbController extends Controller
         $service_s = $add_data['service_s'];
         $postal = $add_data['postal'];
         $address = $add_data['address'];
-        $s_address = $add_data['address2'];
         $room_number = $add_data['room_number'];
 
     //同一契約者の検索
         $contractor = DB::table("contractor")->where("name","=","$name","AND", 
              'service_s','=',"$service_s","AND", 'postal','=',"$postal","AND",
-             'address','=',"$address","AND",'s_address','=',"$s_address","AND",
-             'room_number','=',"$room_number")->count();
+             'address','=',"$address","AND",'room_number','=',"$room_number")->count();
 
         $l_user = \Auth::user();
 
@@ -91,21 +89,18 @@ class AdddbController extends Controller
              'service_s' => $service_s,
              'postal' => $postal,
              'address' => $address,
-             's_address' => $s_address,
              'room_number' => $room_number,
              ]);
 
              $contractor_id = DB::table("contractor")->where("name","=","$name","AND", 
              'service_s','=',"$service_s","AND", 'postal','=',"$postal","AND",
-             'address','=',"$address","AND",'s_address','=',"$s_address","AND",
-             'room_number','=',"$room_number")->value('id');
+             'address','=',"$address","AND",'room_number','=',"$room_number")->value('id');
          }else{
              $test='同一名いるので入電情報だけ登録';
 
              $contractor_id = DB::table("contractor")->where("name","=","$name","AND", 
              'service_s','=',"$service_s","AND", 'postal','=',"$postal","AND",
-             'address','=',"$address","AND",'s_address','=',"$s_address","AND",
-             'room_number','=',"$room_number")->value('id');
+             'address','=',"$address","AND",'room_number','=',"$room_number")->value('id');
          }
 
     //入電情報の登録
@@ -114,6 +109,7 @@ class AdddbController extends Controller
         'user_id' => $l_user->id,
         'contractor_id' => $contractor_id,
         'tel' => $add_data["tel"],
+        'tel2' => $add_data["tel2"],
         'income' => $add_data["income"],
         'relation' => $add_data["relation"],
         'overview' => $add_data["overview"],

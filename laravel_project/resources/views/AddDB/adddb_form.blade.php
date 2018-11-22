@@ -76,30 +76,17 @@
                       <input class="form-control input-sm" name="room_number" placeholder="部屋番号（任意入力）" size="20" type="text" value="{{old('room_number')}}">
                   </div>
               </div>
-              <div class="row">
-                  <div class="col-sm-3">住所2</div>
-                  <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" name="address2" placeholder="住所2（任意入力）" size="30" type="text" value="{{old('address2')}}">
-                  </div>
-              </div>
-              <div class="row">
-                  <div class="col-sm-3">部屋番号2</div>
-                  <div class="col-sm-9 form-inline" style="padding: 3px;">
-                      <input class="form-control input-sm" name="room_number2" placeholder="部屋番号2（任意入力）" size="20" type="text" value="{{old('room_number2')}}">
-                  </div>
-              </div>
+</div>
+
+<div id="inquiry">
+              <input class="form-control input-sm" type="hidden" name="create_time" value="{{$ldate}}">
+
               <div class="row">
                   <div class="col-sm-3">電話番号2</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
                       <input class="form-control input-sm" name="tel2" placeholder="00-0000-0000" size="20" type="tel" value="{{old('tel2')}}">
                   </div>
               </div>
-</div>
-
-<div id="inquiry">
-
-              <input class="form-control input-sm" type="hidden" name="create_time" value="{{$ldate}}">
-
               <div class="row">
                   <div class="col-sm-3">代理店名</div>
                   <div class="col-sm-9 form-inline" style="padding: 3px;">
